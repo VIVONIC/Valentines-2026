@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #b30000, #ff4d4d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    color: #b30000;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  
+  .yes {
+    background: #ff4d4d;
+    color: white;
+  }
+  
+  .yes:hover {
+    background: #e60000;
+    transform: scale(1.1);
+  }
+  
+  .no {
+    background: #ddd;
+    color: #333;
+  }
+  
+  .no:hover {
+    background: #bbb;
+  }
+  
+  .calendar-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  
+  .calendar-btn:hover {
+    background: #e60000;
+    transform: scale(1.05);
+  }
+  

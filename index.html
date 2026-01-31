@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card" id="card">
+    <h1 id="question">Will you be my Valentine? ❤️</h1>
+
+    <div class="buttons" id="buttons">
+      <button class="yes" onclick="handleYes()">Yes</button>
+      <button class="no" onclick="handleNo()">No</button>
+    </div>
+  </div>
+
+  <script>
+    let stage = 1;
+
+    function handleYes() {
+      if (stage === 1) {
+        document.getElementById("question").innerText = "Hiroi Sushi? 🍣❤️";
+        stage = 2;
+
+      } else if (stage === 2) {
+        showMapAndCalendar();
+        stage = 3;
+      }
+    }
+
+    function handleNo() {
+      alert("Wrong answer 😌");
+    }
+
+    function showMapAndCalendar() {
+      const card = document.getElementById("card");
+
+      card.innerHTML = `
+        <h1>It's a date! 💖🍣</h1>
+        <p><strong>Feb 14, 2026 · 7:00 PM</strong></p>
+
+        <iframe
+          src="https://www.google.com/maps?q=Hiroi+Sushi+Mississauga+ON&z=16&output=embed"
+          width="100%"
+          height="250"
+          style="border:0; border-radius:12px; margin:20px 0;"
+          loading="lazy"
+        ></iframe>
+
+        <button class="calendar-btn" onclick="downloadICS()">
+          Add to Calendar 📅
+        </button>
+      `;
+    }
+
+    function downloadICS() {
+      const icsContent = `
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+SUMMARY:Valentine’s Dinner ❤️🍣
+LOCATION:Hiroi Sushi, Mississauga, ON
+DESCRIPTION:Valentine’s date 💕
+END:VEVENT
+END:VCALENDAR
+      `.trim();
+
+      const blob = new Blob([icsContent], { type: "text/calendar" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Valentines_Dinner.ics";
+      document.body.appendChild(a);
+      a.click();
+
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+
+</body>
+</html>
