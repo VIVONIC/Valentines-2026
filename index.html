@@ -10,7 +10,7 @@
   <div class="card" id="card">
     <h1 id="question">Will you be my Valentine? ❤️</h1>
 
-    <div class="buttons" id="buttons">
+    <div class="buttons">
       <button class="yes" onclick="handleYes()">Yes</button>
       <button class="no" onclick="handleNo()">No</button>
     </div>
@@ -25,7 +25,7 @@
         stage = 2;
 
       } else if (stage === 2) {
-        showMapAndCalendar();
+        showDateDetails();
         stage = 3;
       }
     }
@@ -34,7 +34,7 @@
       alert("Wrong answer 😌");
     }
 
-    function showMapAndCalendar() {
+    function showDateDetails() {
       const card = document.getElementById("card");
 
       card.innerHTML = `
@@ -49,38 +49,17 @@
           loading="lazy"
         ></iframe>
 
-        <button class="calendar-btn" onclick="downloadICS()">
+        <a
+          class="calendar-btn"
+          href="https://www.google.com/calendar/render?action=TEMPLATE&text=Valentine’s+Dinner+❤️🍣&dates=20260214T190000/20260214T210000&details=Valentine’s+dinner+date&location=Hiroi+Sushi+Mississauga+ON"
+          target="_blank"
+        >
           Add to Calendar 📅
-        </button>
+        </a>
       `;
-    }
-
-    function downloadICS() {
-      const icsContent = `
-BEGIN:VCALENDAR
-VERSION:2.0
-CALSCALE:GREGORIAN
-BEGIN:VEVENT
-SUMMARY:Valentine’s Dinner ❤️🍣
-LOCATION:Hiroi Sushi, Mississauga, ON
-DESCRIPTION:Valentine’s date 💕
-END:VEVENT
-END:VCALENDAR
-      `.trim();
-
-      const blob = new Blob([icsContent], { type: "text/calendar" });
-      const url = URL.createObjectURL(blob);
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Valentines_Dinner.ics";
-      document.body.appendChild(a);
-      a.click();
-
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
     }
   </script>
 
 </body>
 </html>
+
